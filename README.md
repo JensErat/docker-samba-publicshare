@@ -6,13 +6,15 @@ This image allows you to easily share a folder to the public using the SMB proto
 
 To share a folder, bind it as a volume to the internal path `/srv` and expose the ports required by the SMB protocol. An example would be
 
-	docker run -d \
+	docker run -td \
 		--publish 445:445 \
 		--publish 137:137 \
 		--publish 138:138 \
 		--publish 139:139 \
 		--volume /srv/samba:/srv \
 		jenserat/samba-publicshare
+
+**Note:** observe the `-t` parameter, which attaches a pseudo-tty. This was not required on earlier releases of `smbd`. Without attaching a tty, `smbd` will exit immediately after starting up.
 
 Use the optional `workgroup` environment variable to set the workgroup:
 
