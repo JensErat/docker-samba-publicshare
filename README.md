@@ -15,6 +15,7 @@ To share a folder, bind it as a volume to the internal path `/srv` and expose th
 		jenserat/samba-publicshare
 
 **Note:** observe the `-t` parameter, which attaches a pseudo-tty. This was not required on earlier releases of `smbd`. Without attaching a tty, `smbd` will exit immediately after starting up.
+If you use a docker-compose setup, you should add `tty: true` to your `docker-compose.yml`
 
 Use the optional `workgroup` environment variable to set the workgroup:
 
